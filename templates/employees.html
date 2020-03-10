@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 class="mt-5">Работники</h1>
+    <div class="row">
+        {% for employee in employees %}
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ employee.first_name }}</h5>
+                        <p class="card-text">{{ employee.description }}</p>
+                        <a href="{% url 'employee_profile' employee.id %}" class="btn btn-primary">Перейти в профиль</a>
+                        <p></p>
+                        {% if employee.department %}
+                            <a href="{% url 'department_profile' employee.department.id %}" class="btn btn-secondary">Отдел: {{ employee.department.name }}</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 class="mt-5">{{ full_name }}</h1>
+    <p class="lead"><code>Age:</code> {{ age }}</p>
+    <p class="lead"><code>Description:</code> {{ description }}</p>
+    <p class="lead"><code>Department:</code><a href="{% url 'department_profile' department.id %}">{{ department.name }}</a></p> 
+{% endblock %}

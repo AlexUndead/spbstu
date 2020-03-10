@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 class="mt-5">{{ department_profile.name }}</h1>
+    <a href="{% url 'departments_update' department_profile.id %}">изменить</a>
+    <hr>
+    <p class="lead"><code>Description:</code> {{department_profile.description }}</p>
+    <p class="lead"><code>Employees:</code></p>
+    {% for employee in department_profile.employee_set.all %}
+        <p class="lead"><a href="{% url 'employee_profile' employee.id %}">{{ employee.first_name }}</a></p> 
+    {% endfor %}
+{% endblock %}

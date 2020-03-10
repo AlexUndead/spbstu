@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 class="mt-5">Отделы</h1>
+    <a href="{% url 'departments_create' %}">Создать новый отдел</a>
+    <hr>
+    <div class="row">
+        {% for department in departments %}
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ department.name }}</h5>
+                        <p class="card-text">{{ department.description }}</p>
+                        <a href="{% url 'department_profile' department.id %}" class="btn btn-primary">Перейти в профиль отдела</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
